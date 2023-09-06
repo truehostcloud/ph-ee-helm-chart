@@ -8,7 +8,7 @@ configmap:
   apiversion: "v1"
 
 
-enabled: false
+enabled: true
 image: ""
 imageTag: latest
 SPRING_PROFILES_ACTIVE: ""

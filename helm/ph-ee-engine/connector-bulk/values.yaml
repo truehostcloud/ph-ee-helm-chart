@@ -8,7 +8,7 @@ secret:
 configmap:
   apiversion: "v1"
 
-enabled: ""
+enabled: "false"
 image: ""  
 imageTag: ""
 imagePullPolicy: ""
