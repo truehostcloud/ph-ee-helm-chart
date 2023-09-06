@@ -41,18 +41,18 @@ spec:
               cpu: "{{ .Values.requests.cpu }}"
           env:
             - name: "FINERACT_DATASOURCE_CORE_USERNAME"
-              value: "{{ .Values.datasource.username }}" 
+              value: "{{ .Values.secret.datasource.username }}" 
             - name: "FINERACT_DATASOURCE_CORE_PASSWORD"
               valueFrom:
                 secretKeyRef:
                   name: "operations-app-secret"
                   key: "database-password"
             - name: "FINERACT_DATASOURCE_CORE_HOST"
-              value: "{{ .Values.datasource.host }}"
+              value: "{{ .Values.secret.datasource.host }}"
             - name: "FINERACT_DATASOURCE_CORE_PORT"
-              value: "{{ .Values.datasource.port }}"
+              value: "{{ .Values.secret.datasource.port }}"
             - name: "FINERACT_DATASOURCE_CORE_SCHEMA"
-              value: "{{ .Values.datasource.schema }}"
+              value: "{{ .Values.secret.datasource.schema }}"
             - name: "SPRING_PROFILES_ACTIVE"
               value: "{{ .Values.SPRING_PROFILES_ACTIVE }}"
             - name: "TOKEN_CLIENT_CHANNEL_SECRET"
