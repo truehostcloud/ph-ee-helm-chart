@@ -24,21 +24,21 @@ operations_app:
   contactpoint: "https://ops-bk.sandbox.fynarfin.io/"
   endpoints:
     batch_summary: "/api/v1/batch"
-    batch-detail: "/api/v1/batch/detail"
-mock-payment-schema:
+    batch_detail: "/api/v1/batch/detail"
+mock_payment_schema:
   contactpoint: ""
   endpoints:
-    batch-summary: "/mockapi/v1/batch"
-    batch-detail: "/mockapi/v1/batch/detail"
-bulk-processor:
+    batch_summary: "/mockapi/v1/batch"
+    batch_detail: "/mockapi/v1/batch/detail"
+bulk_processor:
   contactpoint: "https://bulk-connector.sandbox.fynarfin.io/"
   endpoints:
-    batch-transaction: "/batchtransactions"
+    batch_transaction: "/batchtransactions"
 config:
   completion_threshold_check:
-    completion-threshold: 90
-    max-retry-count: 5
-    wait-timer: PT30S
+    completion_threshold: 90
+    max_retry_count: 5
+    wait_timer: PT30S
 tenant: ""
 aws:
   region: "<region>"
