@@ -47,7 +47,7 @@ spec:
             - name: "OPERATIONS-APP_CONTACTPOINT"
               value: "{{ .Values.operations_app.contactpoint }}"
             - name: "OPERATIONS-APP_ENDPOINTS_BATCH-SUMMARY"
-              value: "{{ .Values.operations_app.endpoints.batch-summary }}"
+              value: "{{ .Values.operations_app.endpoints.batch_summary }}"
             - name: "OPERATIONS-APP_ENDPOINTS_BATCH-DETAIL"
               value: "{{ .Values.operations_app.endpoints.batch-detail }}"
             - name: "MOCK-PAYMENT-SCHEMA_CONTACTPOINT"

@@ -23,7 +23,7 @@ zeebe:
 operations_app: 
   contactpoint: "https://ops-bk.sandbox.fynarfin.io/"
   endpoints:
-    batch-summary: "/api/v1/batch"
+    batch_summary: "/api/v1/batch"
     batch-detail: "/api/v1/batch/detail"
 mock-payment-schema:
   contactpoint: ""
