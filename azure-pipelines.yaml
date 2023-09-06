@@ -19,7 +19,7 @@ steps:
   - script: |
       # Lint
       helm dependency update helm/ph-ee-engine
-      for chart in helm/ph-ee-engine ; do
+      for chart in helm/ph-ee-engine/* ; do
           helm dependency update "$chart"
           helm lint "$chart"
       done
