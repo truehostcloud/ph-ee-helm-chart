@@ -26,7 +26,7 @@ requests:
 deployment:
   annotations: { }
 ingress:
-  enabled: true
+  enabled: false
   annotations: { }
   # kubernetes.io/ingress.class: "nginx"
   pathtype: ImplementationSpecific
@@ -34,6 +34,11 @@ ingress:
     - host: ""
       paths:
         - path: /
+      backend:
+        service:
+          name: ""
+          port:
+            number: 80
   tls: [ ]
   #  - secretName: sandbox-secret
   #    hosts:

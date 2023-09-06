@@ -70,6 +70,13 @@ ingress:
     - host: "" 
       paths:
         - path: /
+          backend:
+            service:
+              name: ""
+              port:
+                number: 80
+
+      
   tls: []
   #  - secretName: sandbox-secret
   #    hosts:
