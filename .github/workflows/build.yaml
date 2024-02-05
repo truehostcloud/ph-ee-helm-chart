@@ -1,0 +1,44 @@
+name: Build and Publish Helm Chart
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/add_github_actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Helm
+        run: |
+          # Install Helm
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
+          # Update Helm dependencies
+          helm dependency update helm/ph-ee-engine
+        shell: bash
+
+      - name: Helm lint
+        run: |
+          helm lint helm/ph-ee-engine
+        working-directory: ${{ github.workspace }}
+
+      - name: Package Helm Chart
+        run: |
+          helm package helm/ph-ee-engine --destination $(Build.ArtifactStagingDirectory) --dependency-update false
+        working-directory: ${{ github.workspace }}
+
+      - name: Publish Helm Chart
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+        run: |
+          echo "Publishing Helm chart..."
+          # You can add your logic here to publish the Helm chart.
+          # Replace this with your actual publish steps.
+        working-directory: ${{ github.workspace }}
