@@ -20,6 +20,10 @@ jobs:
         with:
           version: 'latest'
 
+      - name: Initialize Helm
+        run: |
+          helm init --client-only
+
       - name: Package Helm Chart
         run: |
           # Lint
@@ -34,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: paymenthub
-          path: ./artifacts/*
+          path: ./artifacts/paymenthub-*.tgz
