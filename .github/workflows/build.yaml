@@ -3,13 +3,12 @@ name: Build and Package Helm Chart
 on:
   push:
     branches:
-      - main
+      - master
       - develop
   pull_request:
     branches:
-      - main
+      - master
       - develop
-      - feature/add_github_actions
 
 jobs:
   build:
