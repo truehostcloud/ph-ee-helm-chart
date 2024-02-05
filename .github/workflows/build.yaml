@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop
+      - feature/add_github_actions
 
 jobs:
   build:
