@@ -20,18 +20,23 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Package Helm Chart
+      - name: Initialize Helm Repositories
         run: |
-          # Lint
+          helm repo add stable https://charts.helm.sh/stable
+          helm repo update
+
+      - name: Lint Helm Chart
+        run: |
           helm dependency update helm/ph-ee-engine
           helm lint helm/ph-ee-engine
-          # Package Helm chart
+
+      - name: Package Helm Chart
+        run: |
           helm package helm/ph-ee-engine --destination ./artifacts
-          # Display the contents of the artifacts directory
           ls -l ./artifacts
 
       - name: Publish Helm Chart
         uses: actions/upload-artifact@v2
         with:
           name: paymenthub
-          path: ./artifacts/paymenthub-*.tgz
+          path: ./artifacts/*
