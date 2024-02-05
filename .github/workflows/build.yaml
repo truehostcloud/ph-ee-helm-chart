@@ -1,11 +1,10 @@
-name: Build and Publish Helm Chart
+name: Build and Package Helm Chart
 
 on:
   push:
     branches:
       - main
       - develop
-      - feature/add_github_actions
 
 jobs:
   build:
@@ -20,21 +19,18 @@ jobs:
         with:
           version: 'latest'
 
-
-      - name: Helm lint
-        run: |
-          helm lint helm/ph-ee-engine
-        working-directory: ${{ github.workspace }}
-
       - name: Package Helm Chart
         run: |
+          # Lint
           helm dependency update helm/ph-ee-engine
-          helm package helm/ph-ee-engine --destination $(Build.ArtifactStagingDirectory)
+          helm lint helm/ph-ee-engine
+          # Package Helm chart
+          helm package helm/ph-ee-engine --destination ./artifacts
+          # Display the contents of the artifacts directory
+          ls -l ./artifacts
 
       - name: Publish Helm Chart
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
-        run: |
-          echo "Publishing Helm chart..."
-          # You can add your logic here to publish the Helm chart.
-          # Replace this with your actual publish steps.
-        working-directory: ${{ github.workspace }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: paymenthub
+          path: ./artifacts/*
