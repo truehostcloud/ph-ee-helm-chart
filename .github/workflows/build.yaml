@@ -1,36 +1,34 @@
-# name: Build and Package Helm Chart
+name: Build and Package Helm Chart
 
-# on:
-#   push:
-#     branches:
-#       - master
-#       - develop
-#   pull_request:
-#     branches:
-#       - master
-#       - develop
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Lint Helm Chart
-#         run: |
-#           # Lint
-#           helm dependency update helm/ph-ee-engine
-#           helm lint helm/ph-ee-engine
-
-#       - name: Package Helm Chart
-#         run: |
-#           helm package helm/ph-ee-engine --destination ./artifacts
-#           ls -l ./artifacts
-
-#       - name: Publish Helm Chart
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: paymenthub
-#           path: ./artifacts/*
+      - name: Lint Helm Chart
+        run: |
+          # Lint
+          helm dependency update helm/ph-ee-engine
+          helm lint helm/ph-ee-engine
+      - name: Package Helm Chart
+        run: |
+          helm package helm/ph-ee-engine --destination ./artifacts
+          ls -l ./artifacts
+      - name: Publish Helm Chart
+        uses: actions/upload-artifact@v2
+        with:
+          name: paymenthub
+          path: ./artifacts/*
