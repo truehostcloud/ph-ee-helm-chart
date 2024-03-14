@@ -404,6 +404,8 @@ mpesa:
     host: ""
   roster:
     host: ""
+  fineract:
+    host: ""
   retry_count: 3
   api_timeout: 60000
   zeebe_init_transfer_wait_timer: 15
@@ -481,6 +483,9 @@ mpesa:
       currency: "KES"
     roster:
       business_short_code: "12345678"
+      currency: "KES"
+    fineract:
+      business_short_code: "87654321"
       currency: "KES"
 
   limits:
