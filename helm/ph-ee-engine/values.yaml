@@ -405,7 +405,7 @@ mpesa:
   roster:
     host: ""
   fineract:
-    host: ""
+    host: "http://ph-ee-connector-ams-fineract"
   retry_count: 3
   api_timeout: 60000
   zeebe_init_transfer_wait_timer: 15
