@@ -207,6 +207,12 @@ spec:
                 secretKeyRef:
                   name: "mpesa-secret-fineract"
                   key: "pass-key"
+            - name: "FINERACT_HOST"
+              value: "{{ .Values.mpesa.fineract.host }}"
+            - name: "ACCOUNTS_FINERACT_PAYBILL_SHORTCODE"
+              value: "{{ .Values.mpesa.paybill.fineract.business_short_code }}"
+            - name: "ACCOUNTS_FINERACT_CURRENCY"
+              value: "{{ .Values.mpesa.paybill.fineract.currency }}"
             # odoo
             - name: "ACCOUNTS_ODOO_SHORTCODE"
               value: "{{ .Values.mpesa.accounts.odoo.business_short_code}}"
