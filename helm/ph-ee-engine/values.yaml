@@ -273,6 +273,7 @@ channel:
     safaricom: mpesa
     mtn: momo
     tigo: airtel
+    tnm: mpamba
 
 operations:
   enabled: true
@@ -1141,3 +1142,34 @@ odoo_connector:
       co.elastic.logs/enabled: "true"
       instrumentation.opentelemetry.io/inject-java: 'true'
       sidecar.opentelemetry.io/inject: 'sidecar'
+
+tnm_connector:
+  enabled: true
+  replicas: 1
+  image: "oaftech.azurecr.io/oneacrefund/tnm-connector"
+  imageTag: "1.0.0.2024.03.14.1 "
+  imagePullPolicy: "IfNotPresent"
+  zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
+  LOGGING_LEVEL_ROOT: "INFO"
+  SPRING_PROFILES_ACTIVE: ""
+  containerPort: 5000
+  limits:
+    memory: "1Gi"
+    cpu: "200m"
+  requests:
+    memory: "512M"
+    cpu: "100m"
+  credentials:
+    client_id: "abc"
+    client_secret: "xyz"
+    grant_type: "client_credentials"
+  max_retry_count: 3
+  timeout: 6000
+  wait_tnm_pay_request_period: 60
+  skip:
+    enabled: false
+  deployment:
+    annotations:
+      co.elastic.logs/enabled: "true"
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
