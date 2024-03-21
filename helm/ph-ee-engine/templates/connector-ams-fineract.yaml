@@ -30,22 +30,22 @@ spec:
             httpGet:
               path: /actuator/health/liveness
               port: 5004
-            periodSeconds: 60
-            initialDelaySeconds: 3
-            timeoutSeconds: 5
+            periodSeconds: 120
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
               port: 5004
-            initialDelaySeconds: 3
-            periodSeconds: 60
-            timeoutSeconds: 5
+            initialDelaySeconds: 10
+            periodSeconds: 120
+            timeoutSeconds: 10
           startupProbe:
             httpGet:
               path: /actuator/health/readiness
               port: 5004
-            failureThreshold: 30
-            periodSeconds: 5
+            failureThreshold: 90
+            periodSeconds: 15
           env:
             - name: "SPRING_PROFILES_ACTIVE"
               value: "{{ .Values.fineract_connector.SPRING_PROFILES_ACTIVE }}"
