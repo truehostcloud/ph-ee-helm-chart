@@ -1152,6 +1152,7 @@ tnm_connector:
   zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
   LOGGING_LEVEL_ROOT: "INFO"
   SPRING_PROFILES_ACTIVE: ""
+  CHANNEL_HOST: "http://ph-ee-connector-channel"
   containerPort: 5000
   limits:
     memory: "1Gi"

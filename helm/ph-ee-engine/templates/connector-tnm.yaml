@@ -62,6 +62,8 @@ spec:
               value: "{{ .Values.tnm_connector.spring_profiles_active }}"
             - name: "ZEEBE_WAIT-TNM-PAY-REQUEST-PERIOD"
               value: "{{ .Values.tnm_connector.wait_tnm_pay_request_period }}"
+            - name: "CHANNEL_HOST"
+              value: "{{ .Values.tnm_connector.CHANNEL_HOST  }}"  
 
 --- 
 apiVersion: v1
