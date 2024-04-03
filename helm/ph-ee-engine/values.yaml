@@ -1170,3 +1170,12 @@ tnm_connector:
       co.elastic.logs/enabled: "true"
       instrumentation.opentelemetry.io/inject-java: "true"
       sidecar.opentelemetry.io/inject: "sidecar"
+  paybill:
+    roster:
+      business_short_code: "12345678"
+      currency: "MWK"
+      base_url: "http://ph-ee-connector-ams-roster"
+    fineract:
+      business_short_code: "24322607"
+      currency: "MWK"
+      base_url: "http://ph-ee-connector-ams-fineract"

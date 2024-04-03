@@ -63,7 +63,19 @@ spec:
             - name: "ZEEBE_WAIT-TNM-PAY-REQUEST-PERIOD"
               value: "{{ .Values.tnm_connector.wait_tnm_pay_request_period }}"
             - name: "CHANNEL_HOST"
-              value: "{{ .Values.tnm_connector.CHANNEL_HOST  }}"  
+              value: "{{ .Values.tnm_connector.CHANNEL_HOST  }}"
+            - name: "ACCOUNTS_FINERACT_PAYBILL_SHORTCODE"
+              value: "{{ .Values.tnm_connector.paybill.fineract.business_short_code  }}"
+            - name: "ACCOUNTS_FINERACT_CURRENCY"
+              value: "{{ .Values.tnm_connector.paybill.fineract.currency  }}" 
+            - name: "ACCOUNTS_FINERACT_BASEURL"
+              value: "{{ .Values.tnm_connector.paybill.fineract.base_url  }}"
+            - name: "ACCOUNTS_ROSTER_PAYBILL_SHORTCODE"
+              value: "{{ .Values.tnm_connector.paybill.roster.business_short_code  }}"
+            - name: "ACCOUNTS_ROSTER_CURRENCY"
+              value: "{{ .Values.tnm_connector.paybill.roster.currency  }}" 
+            - name: "ACCOUNTS_ROSTER_BASEURL"
+              value: "{{ .Values.tnm_connector.paybill.roster.base_url  }}"  
 
 --- 
 apiVersion: v1
