@@ -223,12 +223,12 @@ channel:
   gsma_payee_tenant: ""
   DFSPIDS: "oaf,rw-oaf"
   operations:
-    url: ""
+    url: "http://ph-ee-operations-app"
     authEnabled: false
   tenantPrimary:
     clientId: ""
     clientSecret: ""
-    tenant: ""
+    tenant: "oaf"
   tenantSecondary:
     clientId: ""
     clientSecret: ""
