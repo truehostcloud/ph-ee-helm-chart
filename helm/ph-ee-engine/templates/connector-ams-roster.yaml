@@ -63,7 +63,7 @@ spec:
             - name: "LOGGING_LEVEL_ROOT"
               value: "{{ .Values.roster_connector.LOGGING_LEVEL_ROOT }}"
             {{- range $key, $value := .Values.roster_connector.pesacore.countries }}
-            - name: "{{ cat "PESACORE_COUNTRIES_" $key "__COUNTRY_ID" | nospace }}"
+            - name: "{{ cat "PESACORE_COUNTRIES_" $key "__COUNTRY-ID" | nospace }}"
               value: "{{ $value.country_id }}"
             - name: "{{ cat "PESACORE_COUNTRIES_" $key "__CURRENCY" | nospace }}"
               value: "{{ $value.currency }}"
