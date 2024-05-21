@@ -521,6 +521,13 @@ roster_connector:
   pesacore:
     base_url: "https://qaoperations01.oneacrefund.org"
     auth_header: "PaymentHubTest"
+    countries:
+      - country_id: 454
+        currency: MWK
+      - country_id: 404
+        currency: KES
+      - country_id: 646
+        currency: RWF
   ams:
     local:
       enabled: true
