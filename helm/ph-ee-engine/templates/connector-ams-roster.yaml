@@ -67,6 +67,7 @@ spec:
               value: "{{ $value.country_id }}"
             - name: "{{ cat "PESACORE_COUNTRIES_" $key "__CURRENCY" | nospace }}"
               value: "{{ $value.currency }}"
+            {{- end }}
           resources:
             limits:
               memory: "{{ .Values.roster_connector.limits.memory }}"
