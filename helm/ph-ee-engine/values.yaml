@@ -213,8 +213,8 @@ kibana:
 channel:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-connector-channel"
-  imageTag: "v1.4.2"
+  image: "truehostcloud/ph-ee-connector-channel"
+  imageTag: "3a5f44af8cbff90bd4834f9995673b1318920393"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
@@ -322,9 +322,9 @@ ph_ee_connector_mojaloop:
 operations_app:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-operations-app"
+  image: "truehostcloud/ph-ee-operations-app"
   imagePullPolicy: IfNotPresent
-  imageTag: "v1.3.0"
+  imageTag: "8b4d595626f8ee93d884b82ae3da6426466aadf4"
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
   LOGGING_PATTERN_CONSOLE: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
@@ -357,8 +357,8 @@ operations_app:
 operations_web:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ops-web"
-  imageTag: "v1.3.2"
+  image: "truehostcloud/ph-ee-operations-web"
+  imageTag: "1f97166c1d3652b128e49b7d5bf86b744c3a6f32"
   imagePullPolicy: IfNotPresent
   hostname: ""
   webhost: ""
@@ -390,8 +390,8 @@ identity:
 mpesa:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-connector-mpesa"
-  imageTag: "v1.4.1"
+  image: "truehostcloud/ph-ee-connector-mpesa"
+  imageTag: "e773efef53cc7d2989276feee8ae59229d3c65f3"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
