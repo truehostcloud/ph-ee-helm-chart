@@ -39,13 +39,13 @@ zeebe-cluster-helm:
       disableExporter: true
       host: "ph-ee-elasticsearch"
   annotations:
-    prometheus.io/scrape: 'true'
-    prometheus.io/port: '9600'
-    prometheus.io/path: '/metrics'
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9600"
+    prometheus.io/path: "/metrics"
 
   image:
     repository: camunda/zeebe
-    tag: 1.3.4
+    tag: 1.1.0
 
   clusterSize: "1"
   partitionCount: "1"
@@ -80,27 +80,27 @@ zeebe-cluster-helm:
     - name: ZEEBE_BROKER_BACKPRESSURE_VEGAS_BETA
       value: "8"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_EVENT
-      value: 'true'
+      value: "true"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_VARIABLE
-      value: 'true'
+      value: "true"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_PROCESSINSTANCE
-      value: 'true'
+      value: "true"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_PROCESS
-      value: 'true'
+      value: "true"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_INCIDENT
-      value: 'true'
+      value: "true"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_DEPLOYMENT
-      value: 'false'
+      value: "false"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_ERROR
-      value: 'false'
+      value: "false"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_JOB
-      value: 'false'
+      value: "false"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_VARIABLEDOCUMENT
-      value: 'false'
+      value: "false"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_WORKFLOWINSTANCE
-      value: 'false'
+      value: "false"
     - name: ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_INDEX_CREATETEMPLATE
-      value: 'false'
+      value: "false"
 
   gateway:
     replicas: 1
@@ -138,16 +138,16 @@ zeebe-cluster-helm:
     co.elastic.logs/enabled: "true"
     co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s(\d\d:){2}\d{2}.\d{3}\s'
     co.elastic.logs/multiline.negate: "true"
-    co.elastic.logs/multiline.match: 'after'
-    instrumentation.opentelemetry.io/inject-java: 'true'
-    sidecar.opentelemetry.io/inject: 'sidecar'
+    co.elastic.logs/multiline.match: "after"
+    instrumentation.opentelemetry.io/inject-java: "true"
+    sidecar.opentelemetry.io/inject: "sidecar"
 
 # payment hub Operate, ES and Kibana
 zeebe-operate-helm:
   enabled: false
   image:
     repository: camunda/operate
-    tag: 1.3.4
+    tag: 1.1.0
   fullnameOverride: "zeebe-operate"
   global:
     zeebe: "zeebe-zeebe"
@@ -250,8 +250,8 @@ channel:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
   ams:
     groups:
       - identifier: "ACCOUNTID"
@@ -351,8 +351,8 @@ operations_app:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 operations_web:
   enabled: true
@@ -379,7 +379,7 @@ operations_web:
     annotations:
       co.elastic.logs/enabled: "true"
       co.elastic.logs/multiline.pattern: '^(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
 
 identity:
@@ -504,10 +504,10 @@ mpesa:
     annotations:
       co.elastic.logs/enabled: "true"
       co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 roster_connector:
   enabled: true
@@ -541,10 +541,10 @@ roster_connector:
     annotations:
       co.elastic.logs/enabled: "true"
       co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 paygops_connector:
   enabled: true
@@ -570,8 +570,8 @@ paygops_connector:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 messagegateway:
   enabled: true
@@ -607,10 +607,10 @@ messagegateway:
     annotations:
       co.elastic.logs/enabled: "true"
       co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 notifications:
   enabled: false
@@ -644,10 +644,10 @@ notifications:
     annotations:
       co.elastic.logs/enabled: "false"
       co.elastic.logs/multiline.pattern: '^\d{4}-\d{2}-\d{2}\s(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 zeebe_ops:
   enabled: true
@@ -736,8 +736,8 @@ importer_es:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 kafka:
   enabled: true
@@ -781,10 +781,10 @@ importer_rdbms:
     annotations:
       co.elastic.logs/enabled: "true"
       co.elastic.logs/multiline.pattern: '^(\d\d:){2}\d{2}.\d{3}\s'
-      co.elastic.logs/multiline.negate: 'true'
+      co.elastic.logs/multiline.negate: "true"
       co.elastic.logs/multiline.match: after
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
   javaToolOptions: "-Xmx256M"
 
 connector_bulk:
@@ -944,7 +944,7 @@ kong:
           kubernetes.io/ingress.class: "kong"
         labels:
           global: "false"
-      disabled: false  # optionally disable the plugin in Kong
+      disabled: false # optionally disable the plugin in Kong
       plugin: request-transformer
       config:
         remove:
@@ -959,7 +959,7 @@ kong:
           kubernetes.io/ingress.class: "kong"
         labels:
           global: "true"
-      disabled: false  # optionally disable the plugin in Kong
+      disabled: false # optionally disable the plugin in Kong
       plugin: cors
       config:
         origins:
@@ -977,11 +977,11 @@ kong:
           kubernetes.io/ingress.class: "kong"
         labels:
           global: "false"
-      disabled: false  # optionally disable the plugin in Kong
+      disabled: false # optionally disable the plugin in Kong
       plugin: oidc
-      config:  # configuration for the plugin
+      config: # configuration for the plugin
         client_id: kong-oidc
-        client_secret: xxxxxxxx  # Generated on keyCloak
+        client_secret: xxxxxxxx # Generated on keyCloak
         realm: kong
         discovery: https://keycloak.localhost/auth/realms/kong-oidc/.well-known/openid-configuration
         scope: openid
@@ -992,7 +992,7 @@ keycloak:
     enabled: false
     ingressClassName: "kong"
     rules:
-      - host: 'keycloak.mifos.io'
+      - host: "keycloak.mifos.io"
     tls: []
   extraVolumes: |
     - name: realm-secret
@@ -1030,8 +1030,8 @@ tupande_connector:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 erply_connector:
   enabled: true
@@ -1057,8 +1057,8 @@ erply_connector:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 fineract_connector:
   enabled: true
@@ -1083,8 +1083,8 @@ fineract_connector:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 airtel_connector:
   enabled: true
@@ -1147,8 +1147,8 @@ odoo_connector:
   deployment:
     annotations:
       co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: 'true'
-      sidecar.opentelemetry.io/inject: 'sidecar'
+      instrumentation.opentelemetry.io/inject-java: "true"
+      sidecar.opentelemetry.io/inject: "sidecar"
 
 tnm_connector:
   enabled: true
