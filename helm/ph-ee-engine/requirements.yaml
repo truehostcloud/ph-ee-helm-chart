@@ -1,10 +1,8 @@
 dependencies:
   - name: zeebe-cluster-helm
     repository: "file://./zeebe-cluster-helm"
-    version: 1.0.0
   - name: zeebe-operate-helm
     repository: "file://./zeebe-operate-helm"
-    version: 1.2.0
     condition: "zeebe-operate-helm.enabled"
   - name: elasticsearch
     repository: http://helm.elastic.co
