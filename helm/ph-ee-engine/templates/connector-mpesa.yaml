@@ -135,54 +135,6 @@ spec:
             - name: "paybill_accountHoldingInstitutionId"
               value: "{{ .Values.mpesa.paybill.accountHoldingInstitutionId }}"
 
-            # erply
-            - name: "ACCOUNTS_ERPLY_SHORTCODE"
-              value: "{{ .Values.mpesa.accounts.erply.business_short_code }}"
-            - name: "ACCOUNTS_ERPLY_TILL"
-              value: "{{ .Values.mpesa.accounts.erply.till }}"
-            - name: "ACCOUNTS_ERPLY_AUTHHOST"
-              value: "{{ .Values.mpesa.accounts.erply.auth_host }}"
-            - name: "ACCOUNTS_ERPLY_APIHOST"
-              value: "{{ .Values.mpesa.accounts.erply.api_host }}"
-            - name: "ACCOUNTS_ERPLY_CLIENTKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-erply"
-                  key: "client-key"
-            - name: "ACCOUNTS_ERPLY_CLIENTSECRET"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-erply"
-                  key: "client-secret"
-            - name: "ACCOUNTS_ERPLY_PASSKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-erply"
-                  key: "pass-key"
-            # tupande
-            - name: "ACCOUNTS_TUPANDE_SHORTCODE"
-              value: "{{ .Values.mpesa.accounts.tupande.business_short_code}}"
-            - name: "ACCOUNTS_TUPANDE_TILL"
-              value: "{{ .Values.mpesa.accounts.tupande.till }}"
-            - name: "ACCOUNTS_TUPANDE_AUTHHOST"
-              value: "{{ .Values.mpesa.accounts.tupande.auth_host }}"
-            - name: "ACCOUNTS_TUPANDE_APIHOST"
-              value: "{{ .Values.mpesa.accounts.tupande.api_host }}"
-            - name: "ACCOUNTS_TUPANDE_CLIENTKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-tupande"
-                  key: "client-key"
-            - name: "ACCOUNTS_TUPANDE_CLIENTSECRET"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-tupande"
-                  key: "client-secret"
-            - name: "ACCOUNTS_TUPANDE_PASSKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-tupande"
-                  key: "pass-key"
             # fineract
             - name: "ACCOUNTS_FINERACT_SHORTCODE"
               value: "{{ .Values.mpesa.accounts.fineract.business_short_code}}"
@@ -213,30 +165,6 @@ spec:
               value: "{{ .Values.mpesa.paybill.fineract.business_short_code }}"
             - name: "ACCOUNTS_FINERACT_CURRENCY"
               value: "{{ .Values.mpesa.paybill.fineract.currency }}"
-            # odoo
-            - name: "ACCOUNTS_ODOO_SHORTCODE"
-              value: "{{ .Values.mpesa.accounts.odoo.business_short_code}}"
-            - name: "ACCOUNTS_ODOO_TILL"
-              value: "{{ .Values.mpesa.accounts.odoo.till }}"
-            - name: "ACCOUNTS_ODOO_AUTHHOST"
-              value: "{{ .Values.mpesa.accounts.odoo.auth_host }}"
-            - name: "ACCOUNTS_ODOO_APIHOST"
-              value: "{{ .Values.mpesa.accounts.odoo.api_host }}"
-            - name: "ACCOUNTS_ODOO_CLIENTKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-odoo"
-                  key: "client-key"
-            - name: "ACCOUNTS_ODOO_CLIENTSECRET"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-odoo"
-                  key: "client-secret"
-            - name: "ACCOUNTS_ODOO_PASSKEY"
-              valueFrom:
-                secretKeyRef:
-                  name: "mpesa-secret-odoo"
-                  key: "pass-key"
 
 ---
 apiVersion: {{ .Values.service.apiversion }}
@@ -281,45 +209,12 @@ data:
 apiVersion: {{ .Values.secret.apiversion }}
 kind: Secret
 metadata:
-  name: mpesa-secret-erply
-type: Opaque
-data:
-  client-key: {{ .Values.mpesa.accounts.paygops.client_key | b64enc }}
-  client-secret: {{ .Values.mpesa.accounts.paygops.client_secret | b64enc }}
-  pass-key: {{ .Values.mpesa.accounts.paygops.pass_key | b64enc }}
-
----
-apiVersion: {{ .Values.secret.apiversion }}
-kind: Secret
-metadata:
-  name: mpesa-secret-tupande
-type: Opaque
-data:
-  client-key: {{ .Values.mpesa.accounts.paygops.client_key | b64enc }}
-  client-secret: {{ .Values.mpesa.accounts.paygops.client_secret | b64enc }}
-  pass-key: {{ .Values.mpesa.accounts.paygops.pass_key | b64enc }}
-
----
-apiVersion: {{ .Values.secret.apiversion }}
-kind: Secret
-metadata:
   name: mpesa-secret-fineract
 type: Opaque
 data:
   client-key: {{ .Values.mpesa.accounts.fineract.client_key | b64enc }}
   client-secret: {{ .Values.mpesa.accounts.fineract.client_secret | b64enc }}
   pass-key: {{ .Values.mpesa.accounts.fineract.pass_key | b64enc }}
-
----
-apiVersion: {{ .Values.secret.apiversion }}
-kind: Secret
-metadata:
-  name: mpesa-secret-odoo
-type: Opaque
-data:
-  client-key: {{ .Values.mpesa.accounts.odoo.client_key | b64enc }}
-  client-secret: {{ .Values.mpesa.accounts.odoo.client_secret | b64enc }}
-  pass-key: {{ .Values.mpesa.accounts.odoo.pass_key | b64enc }}
 
 ---
 {{- if .Values.mpesa.ingress.enabled }}
