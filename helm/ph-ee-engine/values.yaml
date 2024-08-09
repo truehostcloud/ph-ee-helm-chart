@@ -45,7 +45,7 @@ zeebe-cluster-helm:
 
   image:
     repository: camunda/zeebe
-    tag: 1.1.0
+    tag: 1.3.4
 
   clusterSize: "1"
   partitionCount: "1"
@@ -147,7 +147,7 @@ zeebe-operate-helm:
   enabled: false
   image:
     repository: camunda/operate
-    tag: 1.1.0
+    tag: 1.3.4
   fullnameOverride: "zeebe-operate"
   global:
     zeebe: "zeebe-zeebe"
