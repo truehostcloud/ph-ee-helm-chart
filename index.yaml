@@ -75,4 +75,41 @@ entries:
     urls:
     - https://github.com/truehostcloud/ph-ee-helm-charts/releases/download/ph-ee-engine-1.6.2-SNAPSHOT/ph-ee-engine-1.6.2-SNAPSHOT.tgz
     version: 1.6.2-SNAPSHOT
-generated: "2024-08-09T08:21:37.491213354Z"
+  - apiVersion: v1
+    appVersion: 1.6.2
+    created: "2024-08-09T10:32:35.011097399Z"
+    dependencies:
+    - name: zeebe-cluster-helm
+      repository: file://./zeebe-cluster-helm
+      version: 1.1.2-SNAPSHOT
+    - condition: zeebe-operate-helm.enabled
+      name: zeebe-operate-helm
+      repository: file://./zeebe-operate-helm
+      version: 1.2.0-SNAPSHOT
+    - name: elasticsearch
+      repository: http://helm.elastic.co
+      version: 7.16.3
+    - condition: kibana.enabled
+      name: kibana
+      repository: http://helm.elastic.co
+      version: 7.16.3
+    - alias: operationsmysql
+      condition: operations.mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.8
+    - condition: kong.enabled
+      name: kong
+      repository: https://charts.konghq.com
+      version: 2.13.1
+    - condition: keycloak.enabled
+      name: keycloak
+      repository: https://codecentric.github.io/helm-charts
+      version: 18.3.0
+    description: PaymentHub EE Engine
+    digest: d6ad4cb1b082ebbec555a432e8c05c1524ccba1eeabc671246c45ceb71d7632b
+    name: ph-ee-engine
+    urls:
+    - https://github.com/truehostcloud/ph-ee-helm-charts/releases/download/ph-ee-engine-1.6.2-SNAPSHOT/ph-ee-engine-1.6.2-SNAPSHOT.tgz
+    version: 1.6.2-SNAPSHOT
+generated: "2024-08-09T10:32:35.011110363Z"
