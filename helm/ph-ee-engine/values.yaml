@@ -1,8 +1,8 @@
 mtn_rwanda_connector:
   enabled: true
-  image: "oaftech.azurecr.io/oneacrefund/mtn-connector"
-  imageTag: "1.0.0"
-  tenants: "oaf"
+  image: "docker.io/truehostcloud/ph-ee-connector-mtn"
+  imageTag: "1ea264bcaaca00d61fbfe1623e4fe331d0d2bd32"
+  tenants: "mifos"
   imagePullPolicy: "IfNotPresent"
   zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
   camel_server_port: 5000
@@ -213,7 +213,7 @@ kibana:
 channel:
   enabled: true
   replicas: 1
-  image: "truehostcloud/ph-ee-connector-channel"
+  image: "docker.io/truehostcloud/ph-ee-connector-channel"
   imageTag: "3a5f44af8cbff90bd4834f9995673b1318920393"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
@@ -221,14 +221,14 @@ channel:
   LOGGING_PATTERN_CONSOLE: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
   TRANSACTION_ID_LENGTH: 20
   gsma_payee_tenant: ""
-  DFSPIDS: "oaf,rw-oaf"
+  DFSPIDS: "mifos,rw-mifos"
   operations:
     url: "http://ph-ee-operations-app"
     authEnabled: false
   tenantPrimary:
     clientId: ""
     clientSecret: ""
-    tenant: "oaf"
+    tenant: "mifos"
   tenantSecondary:
     clientId: ""
     clientSecret: ""
@@ -307,11 +307,11 @@ operationsmysql:
     rootPassword: "4ET6ywqlGt"
   initdbScripts:
     setup.sql: |-
-      CREATE DATABASE IF NOT EXISTS oaf;
+      CREATE DATABASE IF NOT EXISTS mifos;
       CREATE DATABASE IF NOT EXISTS messagegateway;
       GRANT ALL ON *.* TO 'root'@'%';
       GRANT ALL PRIVILEGES ON messagegateway.* TO 'mifos';
-      GRANT ALL PRIVILEGES ON oaf.* TO 'mifos';
+      GRANT ALL PRIVILEGES ON mifos.* TO 'mifos';
 
 ph_ee_connector_ams_mifos:
   enabled: false
@@ -322,14 +322,14 @@ ph_ee_connector_mojaloop:
 operations_app:
   enabled: true
   replicas: 1
-  image: "truehostcloud/ph-ee-operations-app"
+  image: "docker.io/truehostcloud/ph-ee-operations-app"
   imagePullPolicy: IfNotPresent
   imageTag: "8b4d595626f8ee93d884b82ae3da6426466aadf4"
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
   LOGGING_PATTERN_CONSOLE: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
   hostname: ""
-  tenants: "oaf"
+  tenants: "mifos"
   token_client_channel_secret: ""
   datasource:
     username: "mifos"
@@ -357,7 +357,7 @@ operations_app:
 operations_web:
   enabled: true
   replicas: 1
-  image: "truehostcloud/ph-ee-operations-web"
+  image: "docker.io/truehostcloud/ph-ee-operations-web"
   imageTag: "1f97166c1d3652b128e49b7d5bf86b744c3a6f32"
   imagePullPolicy: IfNotPresent
   hostname: ""
@@ -390,14 +390,14 @@ identity:
 mpesa:
   enabled: true
   replicas: 1
-  image: "truehostcloud/ph-ee-connector-mpesa"
+  image: "docker.io/truehostcloud/ph-ee-connector-mpesa"
   imageTag: "e773efef53cc7d2989276feee8ae59229d3c65f3"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
   hostname: ""
   zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
-  tenant: "oaf"
+  tenant: "mifos"
   callback_host: ""
   channel:
     host: ""
@@ -512,8 +512,8 @@ mpesa:
 roster_connector:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-connector-ams-pesa"
-  imageTag: "v1.2.1"
+  image: "docker.io/truehostcloud/ph-ee-connector-ams-pesa"
+  imageTag: "079d095a3c19402e692d9200cfdfd41d0a4401e4"
   imagePullPolicy: IfNotPresent
   LOGGING_LEVEL_ROOT: "INFO"
   SPRING_PROFILES_ACTIVE: "bb"
@@ -549,8 +549,8 @@ roster_connector:
 paygops_connector:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-connector-ams-paygops"
-  imageTag: "v1.5.1"
+  image: "docker.io/truehostcloud/ph-ee-connector-ams-paygops"
+  imageTag: "5a0be5aee5594658f4d8f5aeb129279eef773ed4"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
@@ -576,8 +576,8 @@ paygops_connector:
 messagegateway:
   enabled: true
   replicas: 1
-  image: oaftech.azurecr.io/phee-ns/message-gateway
-  imageTag: "v1.0.0"
+  image: docker.io/truehostcloud/message-gateway
+  imageTag: "13babc95de64b83036cba322c4d49e80382357fc"
   imagePullPolicy: IfNotPresent
   LOGGING_LEVEL_ROOT: "INFO"
   hostname: ""
@@ -615,9 +615,9 @@ messagegateway:
 notifications:
   enabled: false
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-notifications"
+  image: "docker.io/truehostcloud/ph-ee-notifications"
   imagePullPolicy: IfNotPresent
-  imageTag: "v1.0.1"
+  imageTag: "b9b6dbe3dc4a143c45d3db83db67822bd8214137"
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
   hostname: ""
@@ -652,8 +652,8 @@ notifications:
 zeebe_ops:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/phee-zeebe-ops"
-  imageTag: "v1.0.2"
+  image: "docker.io/openmf/ph-ee-zeebe-ops"
+  imageTag: "v1.2.0"
   imagePullPolicy: IfNotPresent
   SPRING_PROFILES_ACTIVE: "bb"
   LOGGING_LEVEL_ROOT: "INFO"
@@ -682,8 +682,8 @@ zeebe_ops:
 importer_es:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-importer-es"
-  imageTag: "v1.4.0"
+  image: "docker.io/openmf/ph-ee-importer-es"
+  imageTag: "v1.5.1"
   imagePullPolicy: IfNotPresent
   reporting:
     enabled: true
@@ -760,8 +760,8 @@ kafka:
 importer_rdbms:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-importer-rdbms"
-  imageTag: "v1.3.1"
+  image: "docker.io/openmf/ph-ee-importer-rdbms"
+  imageTag: "v1.4.1"
   imagePullPolicy: IfNotPresent
   LOGGING_LEVEL_ROOT: "INFO"
   LOGGING_PATTERN_CONSOLE: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
@@ -790,8 +790,8 @@ importer_rdbms:
 connector_bulk:
   enabled: false
   replicas: 1
-  image: "oaftech.azurecr.io/phee-ns/ph-ee-bulk-processor"
-  imageTag: "v1.4.1"
+  image: "docker.io/openmf/ph-ee-bulk-processor"
+  imageTag: "v1.6.1"
   imagePullPolicy: "Always"
   SPRING_PROFILES_ACTIVE: "default"
   camel_disable_ssl: true
@@ -1006,65 +1006,11 @@ keycloak:
     - name: KEYCLOAK_IMPORT
       value: /realm/kong-keycloak-realm.json
 
-tupande_connector:
-  enabled: true
-  replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/tupande-connector"
-  imageTag: "0.0.1"
-  imagePullPolicy: "IfNotPresent"
-  LOGGING_LEVEL_ROOT: "INFO"
-  SPRING_PROFILES_ACTIVE: ""
-  containerPort: 5000
-  limits:
-    memory: "1Gi"
-    cpu: "200m"
-  requests:
-    memory: "512M"
-    cpu: "100m"
-  ams:
-    local:
-      enabled: true
-  tupande:
-    base_url: "https://us-central1-tupandeonline-qa.cloudfunctions.net"
-    auth_header: ""
-  deployment:
-    annotations:
-      co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: "true"
-      sidecar.opentelemetry.io/inject: "sidecar"
-
-erply_connector:
-  enabled: true
-  replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/erply-connector"
-  imageTag: "0.0.1"
-  imagePullPolicy: "IfNotPresent"
-  LOGGING_LEVEL_ROOT: "INFO"
-  SPRING_PROFILES_ACTIVE: ""
-  containerPort: 5000
-  limits:
-    memory: "1Gi"
-    cpu: "200m"
-  requests:
-    memory: "512M"
-    cpu: "100m"
-  ams:
-    local:
-      enabled: true
-  erply:
-    base_url: ""
-    auth_header: ""
-  deployment:
-    annotations:
-      co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: "true"
-      sidecar.opentelemetry.io/inject: "sidecar"
-
 fineract_connector:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/ph-ee-connector-ams-fineract"
-  imageTag: "0.0.1.2023.06.08.1"
+  image: "docker.io/truehostcloud/ph-ee-connector-ams-fineract"
+  imageTag: "0c9870fd8d4c56f9a79c3edacdd069552dae5040"
   imagePullPolicy: "IfNotPresent"
   LOGGING_LEVEL_ROOT: "INFO"
   SPRING_PROFILES_ACTIVE: ""
@@ -1089,8 +1035,8 @@ fineract_connector:
 airtel_connector:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/airtel-connector"
-  imageTag: "0.0.1"
+  image: "docker.io/truehostcloud/ph-ee-connector-airtel"
+  imageTag: "1d19aee899766a0723a75a10c8e92b2ba3e174dd"
   imagePullPolicy: "IfNotPresent"
   zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
   LOGGING_LEVEL_ROOT: "INFO"
@@ -1121,40 +1067,11 @@ airtel_connector:
       instrumentation.opentelemetry.io/inject-java: "true"
       sidecar.opentelemetry.io/inject: "sidecar"
 
-odoo_connector:
-  enabled: true
-  replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/ph-ee-connector-ams-odoo"
-  imageTag: "1.0.0"
-  imagePullPolicy: "IfNotPresent"
-  LOGGING_LEVEL_ROOT: "INFO"
-  SPRING_PROFILES_ACTIVE: ""
-  containerPort: 5000
-  limits:
-    memory: "1Gi"
-    cpu: "200m"
-  requests:
-    memory: "512M"
-    cpu: "100m"
-  ams:
-    local:
-      enabled: true
-  odoo:
-    base_url: "https://mocks.qa.oneacrefund.org"
-    auth_header: ""
-    endpoint:
-      confirmation: "/rest/Odoo+confirmation+Api+Mock/2.1.0/confirmation"
-  deployment:
-    annotations:
-      co.elastic.logs/enabled: "true"
-      instrumentation.opentelemetry.io/inject-java: "true"
-      sidecar.opentelemetry.io/inject: "sidecar"
-
 tnm_connector:
   enabled: true
   replicas: 1
-  image: "oaftech.azurecr.io/oneacrefund/tnm-connector"
-  imageTag: "1.0.0.2024.03.14.1 "
+  image: "docker.io/truehostcloud/ph-ee-connector-tnm"
+  imageTag: "26c917c9e7b328402b8881abdfccd89cd1605ecc"
   imagePullPolicy: "IfNotPresent"
   zeebe_broker_contactpoint: "zeebe-zeebe-gateway:26500"
   LOGGING_LEVEL_ROOT: "INFO"
